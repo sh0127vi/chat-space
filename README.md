@@ -4,18 +4,18 @@
 |Column|Type|Option|
 |------|----|------|
 |id|string|null: false|
-|user_name|string|null: false, unique: true|
-|user_image|string||
+|name|string|null: false, unique: true|
 
 ### Association
-- has_many :message
-- has_many :group, through :groups_users
+- has_many :messages
+- has_many :groups, through :groups_users
+- has_many :groups_users
 
 
-## messageテーブル
+## messagesテーブル
 |Column|Type|Option|
 |------|----|------|
-|body|text|null: false|
+|body|text||
 |image|string||
 |group_id|reference|null:false, foreign_key: true|
 |user_id|reference|null: false, foreign_key:true|
@@ -29,12 +29,12 @@
 |Column|Type|Option|
 |------|----|------|
 |id|string|null: false|
-|group_name|string|null: false|
-|user_id|reference|null: false, foregin_key: true|
+|name|string|null: false|
 
 ### Association
-- has_many :massage
-- has_many :user, through: groups_users
+- has_many :massages
+- has_many :users, through: groups_users
+- has_many :groups_users
 
 
 ## groups_usersテーブル
