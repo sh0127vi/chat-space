@@ -1,11 +1,11 @@
 .left
   .left__top
     .left__top__name
-      sample
+      = current_user.name
     .left__top__btn
       =link_to "#", class: "left__top__btn top__btn--left" do
         = icon('fas', 'pen-square', class: "top__btn--icon")
-      =link_to "#", class: "left__top__btn top__btn--right" do
+      =link_to edit_user_path(current_user), class: "left__top__btn top__btn--right" do
         = icon('fas', 'cog', class: "top__btn--icon")
   .left__bottom
     .left__bottom--title
