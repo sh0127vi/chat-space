@@ -124,7 +124,7 @@ body {
         .label {
           position: absolute;
           top: 15px;
-          right: 10px;
+          right: 30px;
           .icon{
             font-size: 25px;
           }
@@ -132,14 +132,15 @@ body {
             display: none;
           }
         }
-      }
-      .right__bottom--send {
         #send {
-          margin: 15px 40px 0 0;
+          position: absolute;
+          bottom: 5px;  
+          margin: 15px 0 0 20px;
           padding: 10px 20px;
           background-color: $aqua;
         }
-      }
+      }    
+
     }
   }
 }

@@ -20,9 +20,10 @@
   .right__bottom
     .right__bottom--text
       .right__bottom--form
-        %input.login-input-text{name: "message", placeholder: "type a message", type: "text", id: "form"}/
-        %label{class: "label"}
-          = icon('far', 'image', class: "icon")
-          %input{type: "file", class: "file"}
-      .right__bottom--send
-        %input{type: "submit", value: "send", id: "send"}
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, id: "form", placeholder: 'Type a message' 
+          = f.label :image, class: "label" do
+            = icon('far', 'image', class: "icon")
+            = f.file_field :image, class: "file"
+          = f.submit 'Send', id: 'send'
+        
