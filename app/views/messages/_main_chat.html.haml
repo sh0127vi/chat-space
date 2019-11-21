@@ -2,11 +2,11 @@
   .right__top
     .right__top--left
       .right__top--title
-        group name
+        = @group.name
       .right__top--bottom
-        message :
+        = "message : #{current_user.name}"
     .right__top--edit
-      =link_to "Edit", "#", class: "right__top--btn"
+      =link_to "Edit", new_group_path, class: "right__top--btn"
         
 
   .right__content
