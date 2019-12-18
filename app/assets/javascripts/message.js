@@ -1,7 +1,7 @@
 $(function() {
 
   function buildHTML(message) {
-    if (message.image.url) {
+    if (message.image) {
       var html = `<div class="right__content--text">
                     <div class="right__content--name">
                       ${message.user.name}
@@ -12,9 +12,7 @@ $(function() {
                     <div class="right__content--message">
                       ${message.content}
                     </div>
-                    <div>
-                      ${message.image.url}
-                    </div>
+                    <img class="lower-message__imager" src="${message.image}"
                    </div>`
     } else {
       var html = `<div class="right__content--text">
