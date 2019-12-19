@@ -2,7 +2,7 @@
   .right__content--name
     = message.user.name
     %span 
-      = message.created_at.strftime("%Y/%m/%d %H:%M")
+      = message.created_at.to_s
   .right__content--message
     - if message.content.present?
       = message.content
