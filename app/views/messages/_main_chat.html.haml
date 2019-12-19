@@ -4,7 +4,7 @@
       .right__top--title
         = @group.name
       .right__top--bottom
-        = "message : #{current_user.name}"
+        = "member : #{@group.users.name}"
     .right__top--edit
       =link_to "Edit", new_group_path, class: "right__top--btn"
         
