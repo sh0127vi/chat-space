@@ -6,7 +6,7 @@ $(function() {
                     <div class="right__content--name">
                       ${message.user.name}
                       <span>
-                        ${message.created_at}
+                        ${message.time}
                       </span>
                     </div>
                     <div class="right__content--message">
@@ -19,7 +19,7 @@ $(function() {
                     <div class="right__content--name">
                       ${message.user.name}
                       <span>
-                        ${message.created_at}
+                        ${message.time}
                       </span>
                     </div>
                     <div class="right__content--message">
