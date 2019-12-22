@@ -1,10 +1,13 @@
 $(function() {
-
+  last_message_id = $('.right__content--text:last').data("message-id");
+  console.log(last_message_id);
   function buildHTML(message) {
-    if (message.image) {
-      var html = `<div class="right__content--text">
+    
+
+    if (message.content && message.image) {
+      let html = `<div class="right__content--text" data-message-id=` + message.id + `>
                     <div class="right__content--name">
-                      ${message.user.name}
+                      ${message.user_name}
                       <span>
                         ${message.time}
                       </span>
@@ -12,12 +15,16 @@ $(function() {
                     <div class="right__content--message">
                       ${message.content}
                     </div>
-                    <img class="lower-message__imager" src="${message.image}"
+                    <div>
+                      <img class="lower-message__imager" src="${message.image}"
+                    </div>
                    </div>`
-    } else {
-      var html = `<div class="right__content--text">
+      return html;
+
+    } else if (message.content) {
+      let html = `<div class="right__content--text" data-message-id=` + message.id + `} >
                     <div class="right__content--name">
-                      ${message.user.name}
+                      ${message.user_name}
                       <span>
                         ${message.time}
                       </span>
@@ -26,9 +33,25 @@ $(function() {
                       ${message.content}
                     </div>
                   </div>`
-    }
-    return html;
-  }
+      return html;
+
+    } else if (message.image) {
+      let html = `<div class="right__content--text" data-message-id=` + message.id + `>
+                    <div class="right__content--name">
+                      ${message.user_name}
+                      <span>
+                        ${message.time}
+                      </span>
+                    </div>
+                    <div>
+                      <img class="lower-message__imager" src="${message.image}"
+                    </div>
+                  </div>`
+        return html;
+    };
+    
+  };
+
 
   $("#new_message").on("submit", function(e) {
     e.preventDefault();
@@ -53,4 +76,32 @@ $(function() {
       alert('メッセージの送信に失敗しました');
     });
   });
+
+  let reloadMessages = function() {
+    last_message_id = $('.right__content--text:last').data("message-id");
+    $.ajax ({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) {
+        let insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.right__content').append(insertHTML);
+        $('.right__content').animate({ scrollTop: $('.right__content')[0].scrollHeight});
+        $('#new_message')[0].reset();
+        $("#send").prop("disabled", false);
+      }
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 }); 
