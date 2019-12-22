@@ -4,9 +4,10 @@
       .right__top--title
         = @group.name
       .right__top--bottom
-        = "member : #{@group.users.name}"
+        - @group.group_users.each do |group_user|
+          = group_user.user.name
     .right__top--edit
-      =link_to "Edit", new_group_path, class: "right__top--btn"
+      =link_to "Edit", edit_group_path(@group), class: "right__top--btn"
         
 
   .right__content
