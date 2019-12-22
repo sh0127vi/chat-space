@@ -1,8 +1,5 @@
 $(function() {
   
-
-
-  
   function buildHTML(message) {
     if (message.content && message.image) {
       let html = `<div class="right__content--text" data-message-id=` + message.id + `>
