@@ -1,9 +1,9 @@
 $(function() {
-  last_message_id = $('.right__content--text:last').data("message-id");
-  console.log(last_message_id);
-  function buildHTML(message) {
-    
+  
 
+
+  
+  function buildHTML(message) {
     if (message.content && message.image) {
       let html = `<div class="right__content--text" data-message-id=` + message.id + `>
                     <div class="right__content--name">
@@ -49,9 +49,7 @@ $(function() {
                   </div>`
         return html;
     };
-    
   };
-
 
   $("#new_message").on("submit", function(e) {
     e.preventDefault();
@@ -93,12 +91,10 @@ $(function() {
         });
         $('.right__content').append(insertHTML);
         $('.right__content').animate({ scrollTop: $('.right__content')[0].scrollHeight});
-        $('#new_message')[0].reset();
-        $("#send").prop("disabled", false);
       }
     })
     .fail(function() {
-      console.log('error');
+      alert('error');
     });
   };
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
