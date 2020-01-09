@@ -113,20 +113,23 @@ body {
   .right__bottom {
     background-color: #ddd;
     height: 10%;
+    padding: 0 30px;
     &--text {
       display: flex;
+      
       .right__bottom--form {
-        margin: 10px 25px 0 40px;
         position: relative;
+        width: 100%;
+        margin: 10px 0;
         #form {
-          height: 50px;
-          width: 950px;
+          height: 51px;
+          width: 91%;
           position: relative;
         }
         .label {
           position: absolute;
           top: 15px;
-          right: 30px;
+          right: 10%;
           .icon{
             font-size: 25px;
           }
@@ -138,7 +141,7 @@ body {
           position: absolute;
           bottom: 5px;  
           margin: 15px 0 0 20px;
-          padding: 10px 20px;
+          padding: 10px 18px;
           background-color: $aqua;
         }
       }    
