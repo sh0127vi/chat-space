@@ -55,7 +55,7 @@ body {
   width: calc(100% - 300px);
   &__top {
     height: 15%;
-    border: 1px solid #eeeeee;
+    border: 0 solid #eeeeee;
     display: flex;
     justify-content: space-between;
     &--left {
